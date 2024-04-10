@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<body>
+<main th:object="${order}">
+
+
+<!-- Ec breadcrumb start -->
+<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ec_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ec-breadcrumb-title">Thanh Toán</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ec-breadcrumb-list start -->
+                        <ul class="ec-breadcrumb-list">
+                            <li class="ec-breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="ec-breadcrumb-item active">Thanh Toán</li>
+                        </ul>
+                        <!-- ec-breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Ec breadcrumb end -->
+
+<!-- Ec checkout page -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+           
+              
+                                <h3 class="ec-checkout-title">Lịch sử Đơn Hàng</h3>
+
+                                    
+                               <table id="responsive-data-table" class="table" style="width:100%">
+								<thead>
+									<tr>
+										<th>Mã đơn hàng</th>
+										<th>Tên người đặt</th>
+										<th>Ngày đặt</th>
+										<th>Trạng thái</th>
+										<th>Địa chỉ nhận</th>
+										<th>SĐT đặt</th>
+										<th>Chi tiết</th>
+									</tr>
+								</thead>
+
+								<tbody>
+								
+									<tr th:each="order : ${orders}" th:unless="${order.status} == 0	">
+										<td>[[${order.id}]]</td>
+										<td th:text="${order.user.username}"></td>
+										<td>[[${order.createDate}]]</td>
+										<td th:if="${order.status} ==NULL">Chờ xác nhận</td>
+										<td th:if="${order.status} ==1">Đang vận chuyển</td>
+										<td th:if="${order.status} == 2"><span>Đã hoàn thành</span></td>
+										<td th:if="${order.status} == 3"><span>Đã hủy</span></td>
+										<td>[[${order.address}]]</td>
+										<td>[[${order.phoneNumber}]]</td>
+										<td> <a class="dropdown-item" th:href = "@{|/order/detail/${order.id}|}">Xem</a></td>			
+										
+										</tr>
+									
+								</tbody>
+							</table>
+
+
+
+               
+
+                <!--cart content End -->
+
+            <!-- Sidebar Area Start -->
+           
+</section>
+
+</main>   
+</body>
+</html>

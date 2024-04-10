@@ -1,0 +1,43 @@
+<div xmlns:th="http://www.thymeleaf.org">
+
+    <div id="ec-main-menu-desk" class="d-none d-lg-block sticky-nav">
+        <div class="container position-relative">
+            <div class="row">
+                <div class="col-md-12 align-self-center">
+                    <div class="ec-main-menu">
+                        <ul>
+                            <li><a th:href="@{/home}">Trang chủ</a></li>
+                            <li class="dropdown"><a href="javascript:void(0)">Danh Mục</a>
+                                <ul class="sub-menu">
+                                    <li th:each="category : ${categories}" class="dropdown position-static">
+                                        <a href="javascript:void(0)">[[${category.name}]]<i
+                                                class="ecicon eci-angle-right"></i></a>
+                                        <ul class="sub-menu sub-menu-child">
+                                            <li th:each="subcategory : ${category.subcategories}"><a
+                                                    th:href="@{|/product/list?scid=${subcategory.id}|}">[[${subcategory.name}]]</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown position-static">
+                                <a href="javascript:void(0)" th:href="@{|/product/list|}">Sản Phẩm</a>
+                            </li>
+                            
+                            <li class="dropdown"><a href="javascript:void(0)">Trang</a>
+                                <ul class="sub-menu">
+                                    <li><a th:href="@{/cart}">Cart</a></li>
+                                    <li><a th:href="@{/checkout}">Checkout</a></li>
+                                </ul>
+                            </li>
+                           <li class="dropdown position-static">
+                                <a href="javascript:void(0)" th:href="@{|/oder/faq|}">Liên Hệ</a>
+                            </li>   
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

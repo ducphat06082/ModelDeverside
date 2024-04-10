@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+<body>
+	<main ng-app="comment-list-app" ng-controller="comment-list-ctrl"
+		th:object="${commentForm}">
+
+
+
+		<!-- CONTENT WRAPPER -->
+		<div class="ec-content-wrapper">
+			<div class="content">
+				<div class="breadcrumb-wrapper breadcrumb-wrapper-2">
+					<h1>Danh sách bình luận</h1>
+					<p class="breadcrumbs">
+						<span><a href="/admin">Trang Chủ</a></span> <span><i
+							class="mdi mdi-chevron-right"></i></span>Danh sách bình luận
+					</p>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="card card-default">
+							<div class="card-body">
+								<div class="table-responsive">
+									<table id="responsive-data-table" class="table"
+										style="width: 100%">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>ID Sản phẩm</th>
+												<th>Người dùng</th>
+												<th>Nội dung</th>
+												<th>Trạng thái</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr th:each="comment : ${comments}"
+												th:if="${comment.status} == 1">
+												<td>[[${comment.id}]]</td>
+												<td>[[${comment.products.id}]]</td>
+												<td>[[${comment.usernames.username}]]</td>
+												<td>[[${comment.comment}]]</td>
+												<td th:if="${comment.status} == 1"><span
+													class="mb-2 mr-2 badge badge-secondary">Đang hiển thị</span>
+												<td>
+													<div class="btn-group">
+														<button type="button" class="btn btn-outline-success">Ẩn bình luận</button>
+														<button type="button"
+															class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+															data-bs-toggle="dropdown" aria-haspopup="true"
+															aria-expanded="false" data-display="static">
+															<span class="sr-only">Info</span>
+														</button>
+
+														<div class="dropdown-menu">
+															<a class="dropdown-item" th:href="@{|/comment/edit2/${comment.id}}">Chấp nhận</a>
+
+														</div>
+													</div>
+												</td>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Content -->
+		</div>
+		<!-- End Content Wrapper -->
+
+	</main>
+</body>
+</html>

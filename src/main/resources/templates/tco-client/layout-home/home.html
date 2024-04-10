@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
+<body>
+<main>
+    <!-- Main Slider Start -->
+    <div class="ec-main-slider section ">
+        <div class="ec-slider">
+            <div class="ec-slide-item d-flex slide-1">
+                <div class="container align-self-center">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                            <div class="ec-slide-content slider-animation">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ec-slide-item d-flex slide-2">
+                <div class="container align-self-center">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                            <div class="ec-slide-content slider-animation">
+                                <h2 class="ec-slide-stitle">Hàng Mới Về</h2>
+                                <h1 class="ec-slide-title">Những Mô Hình Đẹp</h1>
+                               
+                                <a href="#" class="btn btn-lg btn-secondary">Mua sắm ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ec-slide-item d-flex slide-3">
+                <div class="container align-self-center">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                            <div class="ec-slide-content slider-animation">
+                             
+                                  <h2 class="ec-slide-stitle">Ưu Đãi Khủng</h2>
+                                <h1 class="ec-slide-title">Chờ Gì Nữa!</h1>
+                                <a href="#" class="btn btn-lg btn-secondary">Mua sắm ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Slider End -->
+
+    <!--  category Section Start -->
+    <section class="section ec-services-section"> 
+        <h2 class="d-none">Dá»‹ch vá»¥</h2>
+        <div class="container">
+            <div class="row">
+                <div class="ec_ser_content ec_ser_content_1 col-sm-12 col-md-3">
+                    <div class="ec_ser_inner">
+                        <div class="ec-service-image">
+                            <img src="assets/images/icons/service_5_1.svg" class="svg_img" alt="" />
+                        </div>
+                        <div class="ec-service-desc">
+                            <h2>Miễn phí vận chuyển</h2>ẩm bán chạy
+                            <p>Miễn phí vận chuyển cho các đơn hàng trên 1 triệu VNĐ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec_ser_content ec_ser_content_2 col-sm-12 col-md-3">
+                    <div class="ec_ser_inner">
+                        <div class="ec-service-image">
+                            <img src="assets/images/icons/service_2.svg" class="svg_img" alt="" />
+                        </div>
+                        <div class="ec-service-desc">
+                            <h2>Hỗ trợ</h2>
+                            <p>nhân viên tư vấn 24/7</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec_ser_content ec_ser_content_3 col-sm-12 col-md-3">
+                    <div class="ec_ser_inner">
+                        <div class="ec-service-image">
+                            <img src="assets/images/icons/service_3.svg" class="svg_img" alt="" />
+                        </div>
+                        <div class="ec-service-desc">
+                            <h2>Hoàn trả hoàn tiền</h2>
+                            <p>Hỗ trợ 1 đổi 1 trong vòng 14 ngày nếu sản phẩm giao sai hoặc bị lỗi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec_ser_content ec_ser_content_4 col-sm-12 col-md-3">
+                    <div class="ec_ser_inner">
+                        <div class="ec-service-image">
+                            <img src="assets/images/icons/service_5_4.svg" class="svg_img" alt="" />
+                        </div>
+                        <div class="ec-service-desc">
+                            <h2>Giảm giá thành viên</h2>
+                            <p>Khách hàng thân thiết sẽ luôn nhận được nhiều ưu đãi khủng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <!--category Section End -->
+
+    <!-- Product tab Area Start -->
+    <section class="section ec-exe-spe-section section-space-ptb-100 section-space-mt section-space-mb-100"
+        style="background-image: url('assets/images/special-product/background.jpg');">
+        <div class="container">
+            <div class="row">
+                <!--  Special Section Start -->
+                <div class="ec-spe-section col-lg-6 col-md-12 col-sm-12 margin-b-30">
+                    <div class="col-md-12 text-left">
+                        <div class="section-title mb-6">
+                            <h2 class="ec-title">Bán chạy trong ngày</h2>
+                        </div>
+                    </div>
+                    <div class="ec-spe-products">
+                        <div class="ec-fs-product"  th:each=" p: ${items}"  th:if="${p.id}==4">
+                            <div class="ec-fs-pro-inner ec-product-inner">
+                                <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                    <div class="ec-fs-pro-image">
+                                        <a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}"  class="image">
+                                            <img class="main-image" th:src="@{|/images/products/${p.image1}|}"
+                                                alt="Product" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ec-pro-content col-lg-6 col-md-6 col-sm-6">
+                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
+                                    <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Naruto</a></h6>
+                                    <div class="ec-pro-rat-price">
+                                        <span class="ec-price">
+                                            <span class="new-price">[[*{#numbers.formatDecimal(p.price * (100 - p.discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+                                            <span class="old-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>  
+                                        </span>
+                                    </div>
+                                    <div class="ec-fs-pro-progress">
+                                        <span class="ec-fs-pro-progress-desc"><span>Đã mua:
+                                                <b>0</b></span><span>Đã bán: <b>350</b></span></span>
+                                        <span class="ec-fs-pro-progressbar"></span>
+                                    </div>
+                                    <div class="countdowntimer">
+                                        <span class="ec-fs-count-desc"> Thời gian khuyến mãi kết thúc sau:</span>
+                                        <span id="ec-fs-count-1"></span>
+                                    </div>
+                                    <div class="ec-pro-actions">
+                                        <button title="Add To Cart" class="add-to-cart btn btn-primary" th:attr="ng-click=@{|cart.add(${p.id})|}">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-fs-product" th:each=" p: ${items}"  th:if="${p.id}==6">
+                            <div class="ec-fs-pro-inner ec-product-inner">
+                                <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                    <div class="ec-fs-pro-image">
+                                        <a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}"  class="image">
+                                            <img class="main-image" th:src="@{|/images/products/${p.image1}|}"
+                                                alt="Product" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ec-pro-content col-lg-6 col-md-6 col-sm-6">
+                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
+                                    <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">One Piece</a></h6>
+                                    <div class="ec-pro-rat-price">
+                                        <span class="ec-price">
+                                            <span class="new-price">[[*{#numbers.formatDecimal(p.price * (100 - p.discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+                                                <span class="old-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>  
+                                        </span>
+                                    </div>
+                                    <div class="ec-fs-pro-progress">
+                                        <span class="ec-fs-pro-progress-desc"><span>Đã mua:
+                                                <b>0</b></span><span>Đã bán: <b>200</b></span></span>
+                                        <span class="ec-fs-pro-progressbar"></span>
+                                    </div>
+                                    <div class="countdowntimer">
+                                        <span class="ec-fs-count-desc"> Khuyến mãi kết thúc sau:</span>
+                                        <span id="ec-fs-count-2"></span>
+                                    </div>
+                                    <div class="ec-pro-actions">
+                                        <button title="Add To Cart" class="add-to-cart btn btn-primary" th:attr="ng-click=@{|cart.add(${p.id})|}">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  Special Section End -->
+                <!--  Feature Section Start -->
+                <div class="ec-exe-section col-lg-6 col-md-12 col-sm-12">
+                    <div class="col-md-12 text-left">
+                        <div class="section-title mb-6">
+                            <h2 class="ec-title">Sản phẩm yêu thích</h2>
+                        </div>
+                    </div>
+
+                    <div class="ec-exe-products product-mt-minus-15">
+                        <div class="ec-product-content"  th:each=" p: ${items}"  th:if="${p.id}==8">
+                            <div class="ec-product-inner">
+                                <div class="ec-product-hover"></div>
+                                <div class="ec-pro-image-outer">
+                                    <div class="ec-pro-image"> 
+                                          <a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}"  class="image">
+                                                <img class="main-image" th:src="@{|/images/products/${p.image1}|}"
+                                                    alt="Product" />
+                                                <img class="hover-image" th:src="@{|/images/products/${p.image2}|}"
+                                                    alt="Product" />
+                                            </a>
+                                    </div>
+                                </div>
+                                <div class="ec-pro-content">
+                                    <div class="ec-pro-option">
+                                        <div class="ec-pro-opt-inner">
+                                            <div class="ec-pro-color">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
+                                    <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Naruto</a></h6>
+                                    <div class="ec-pro-rat-price">
+                                        <div class="ec-pro-rat-pri-inner">
+                                            <span class="ec-price">
+                                                <span class="new-price">[[*{#numbers.formatDecimal(p.price * (100 - p.discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+                                                <span class="old-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>  
+                                            </span>
+                                            <span class="ec-pro-rating">
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star-o"></i>
+                                                <i class="ecicon eci-star-o"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="pro-hidden-block">
+
+                                        <div class="ec-pro-desc">Model Reverside tận tình phụ vụ. </div>
+                                        <div class="ec-pro-actions">
+                                            <a href="#" class="ec-btn-group wishlist" title="Wishlist"><img
+                                                    src="assets/images/icons/pro_wishlist.svg" class="svg_img pro_svg"
+                                                    alt="" /></a>
+                                            <button title="Add To Cart" class="add-to-cart btn btn-primary" th:attr="ng-click=@{|cart.add(${p.id})|}">Thêm vào giỏ hàng</button>
+                                            <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                                title="Quick view" data-bs-toggle="modal"
+                                                data-bs-target="#ec_quickview_modal"><img
+                                                    src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
+                                                    alt="" /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-product-content"  th:each=" p: ${items}"  th:if="${p.id}==1">
+                            <div class="ec-product-inner">
+                                <div class="ec-product-hover"></div>
+                                <div class="ec-pro-image-outer">
+                                    <div class="ec-pro-image"> 
+                                          <a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}"  class="image">
+                                                <img class="main-image" th:src="@{|/images/products/${p.image1}|}"
+                                                    alt="Product" />
+                                                <img class="hover-image" th:src="@{|/images/products/${p.image2}|}"
+                                                    alt="Product" />
+                                            </a>
+                                    </div>
+                                </div>
+                                <div class="ec-pro-content">
+                                    <div class="ec-pro-option">
+                                        <div class="ec-pro-opt-inner">
+                                            <div class="ec-pro-color">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
+                                    <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Naruto</a></h6>
+                                    <div class="ec-pro-rat-price">
+                                        <div class="ec-pro-rat-pri-inner">
+                                            <span class="ec-price">
+                                                <span class="new-price">[[*{#numbers.formatDecimal(p.price * (100 - p.discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+                                                <span class="old-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>  
+                                            </span>
+                                            <span class="ec-pro-rating">
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star-o"></i>
+                                                <i class="ecicon eci-star-o"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="pro-hidden-block">
+
+                                        <div class="ec-pro-desc">Model Reverside tận tình phụ vụ. </div>
+                                        <div class="ec-pro-actions">
+                                            <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                    src="assets/images/icons/pro_wishlist.svg" class="svg_img pro_svg"
+                                                    alt="" /></a>
+                                            <button title="Add To Cart" class="add-to-cart btn btn-primary" th:attr="ng-click=@{|cart.add(${p.id})|}">Thêm vào giỏ hàng</button>
+                                            <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                                title="Quick view" data-bs-toggle="modal"
+                                                data-bs-target="#ec_quickview_modal"><img
+                                                    src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
+                                                    alt="" /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  Feature Section End -->
+
+            </div>
+        </div>
+    </section>
+    <section class="section ec-product-tab section-space-p">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-title-block">
+                    <div class="section-title">
+                        <h2 class="ec-title">­Sản Phẩm Nổi Bật</h2> 
+                        <h6>Sản phẩm nổi bật của Model Reverside</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-tb-minus-15">
+                <div class="col">
+                    <div class="tab-content">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 ec-product-content" th:each=" p: ${items}">
+                                <div class="ec-product-inner">
+                                    <div class="ec-product-hover"></div>
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}"  class="image">
+                                                <img class="main-image" th:src="@{|/images/products/${p.image1}|}"
+                                                    alt="Product" />
+                                                <img class="hover-image" th:src="@{|/images/products/${p.image2}|}"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <div class="ec-pro-option">
+                                            <div class="ec-pro-opt-inner">
+                                                <div class="ec-pro-color">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
+                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Anime</a></h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">                 
+	                                               <span class="new-price">[[*{#numbers.formatDecimal(p.price * (100 - p.discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+	                                               <span class="old-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>  
+                                                </span>
+                                                <span class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star-o"></i>
+                                                    <i class="ecicon eci-star-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="pro-hidden-block">
+
+                                            <div class="ec-pro-desc">Model Reverside tận tình, tận ta.</div>
+                                            <div class="ec-pro-actions">
+                                                <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                        src="assets/images/icons/pro_wishlist.svg"
+                                                        class="svg_img pro_svg" alt="" /></a>
+                                                <button title="Add To Cart" class="add-to-cart btn btn-primary" th:attr="ng-click=@{|cart.add(${p.id})|}">Thêm vào giỏ hàng</button>
+                                                <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                                    title="Quick view" data-bs-toggle="modal"
+                                                    data-bs-target="#ec_quickview_modal"><img
+                                                        src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
+                                                        alt="" /></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    </section>
+    <!-- ec Product tab Area End -->
+
+    <!-- ec Banner Section Start -->
+    <section class="ec-banner section section-space-p">
+        <h2 class="d-none">Banner</h2>
+        <div class="container">
+            <div class="row m-tb-minus-15">
+                <div class="ec-banners">
+                    <div class="ec-banner-left col-sm-6">
+                        <div class="ec-banner-block ec-banner-block-1 col-sm-12">
+                            <div class="banner-block">
+                                <img src="assets/images/banner/23.png" alt="" />
+                                <div class="banner-content">
+                                    <span class="ec-banner-stitle"></span>
+                                    <span class="ec-banner-title">Sale off 70%</span>
+                                    <span class="ec-banner-btn"><a href="#" class="btn-primary">Mua sắm ngay</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec-banner-right col-sm-6">
+                        <div class="ec-banner-block ec-banner-block-2 col-sm-12">
+                            <div class="banner-block">
+                                <img src="assets/images/banner/24.png" alt="" />
+                                <div class="banner-content">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- All Item end -->
+
+    <!-- ec testimonial Start -->
+  <section class="section ec-test-section section-space-ptb-100 section-space-mt section-space-mb" 
+        style="background-image: url('assets/images/testimonial/testimonial_bg.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-title-block">
+                    <div class="section-title">
+                        <h2 class="ec-title">Đánh giá khách hàng</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="ec-test-outer">
+                    <ul id="ec-testimonial-slider">
+                        <li class="ec-test-item">
+                            <div class="ec-test-inner">
+                                <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                        src="assets/images/testimonial/1.jpg" /></div>
+                                <div class="ec-test-content">
+                                    <div class="ec-test-name">Phát Wibu</div>
+                                    <div class="ec-test-designation">Việt Nam</div>
+                                    <div class="ec-test-rating">
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                    </div>
+                                    <div class="ec-test-desc">Sản phẩm đúng như ảnh, chất lượng sản phẩm rất tốt</div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ec-test-item">
+                            <div class="ec-test-inner">
+                                <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                        src="assets/images/testimonial/2.jpg" /></div>
+                                <div class="ec-test-content">
+                                    <div class="ec-test-name">Hưng Racing Boy</div>
+                                    <div class="ec-test-designation">Việt Nam</div>
+                                    <div class="ec-test-rating">
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                    </div>
+                                    <div class="ec-test-desc">Săn sale giá rẻ mà sản phẩm quá chất lượng 5 sao cho shop luôn </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ec-test-item">
+                            <div class="ec-test-inner">
+                                <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                        src="assets/images/testimonial/3.jpg" /></div>
+                                <div class="ec-test-content">
+                                    <div class="ec-test-name">Vương simp lỏ</div>
+                                    <div class="ec-test-designation">Việt Nam</div>
+                                    <div class="ec-test-rating">
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                    </div>
+                                    <div class="ec-test-desc">Mô hình Remu quá đẹp 3 vòng căng đét sắc nét xứng đáng 5 sao nha shop</div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ec-test-item">
+                            <div class="ec-test-inner">
+                                <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                        src="assets/images/testimonial/4.jpg" /></div>
+                                <div class="ec-test-content">
+                                    <div class="ec-test-name">Tiến Haiten</div>
+                                    <div class="ec-test-designation">Việt Nam</div>
+                                    <div class="ec-test-rating">
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                        <i class="ecicon eci-star fill"></i>
+                                    </div>
+                                    <div class="ec-test-desc">Mô hình đẹp giao hàng trong ngày điểm trừ không có mô hình haiten</div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section> 
+   <section class="section ec-instagram-section section-space-pt"> 
+        <div class="ec-insta-wrapper">
+            <div class="ec-insta-outer">
+                <div class="insta-auto">
+                    <h2 class="d-none">Instagram</h2>
+       
+                    <div class="ec-insta-item">
+                        <div class="ec-insta-inner">
+                            <a href="#" target="_blank"><img src="assets/images/instragram-image/1.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="ec-insta-item">
+                        <div class="ec-insta-inner">
+                            <a href="#" target="_blank"><img src="assets/images/instragram-image/2.jpg" alt="">
+
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="ec-insta-item">
+                        <div class="ec-insta-inner">
+                            <a href="#" target="_blank"><img src="assets/images/instragram-image/3.jpg" alt="">
+
+                            </a>
+                        </div>
+                    </div>
+     
+                    <div class="ec-insta-item">
+                        <div class="ec-insta-inner">
+                            <a href="#" target="_blank"><img src="assets/images/instragram-image/4.jpg" alt="">
+
+                            </a>
+                        </div>
+                    </div>
+      
+                    <div class="ec-insta-item">
+                        <div class="ec-insta-inner">
+                            <a href="#" target="_blank"><img src="assets/images/instragram-image/5.jpg" alt="">
+
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section> 
+    <!-- Ec Instagram End -->
+
+    <!--  services Section Start -->
+ 
+    <!--services Section End -->
+	
+</main>
+</body>
+</html>

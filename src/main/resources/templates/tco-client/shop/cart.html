@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<body>
+<main>
+<!-- Ec breadcrumb start -->
+<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ec_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ec-breadcrumb-title">Giỏ hàng</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ec-breadcrumb-list start -->
+                        <ul class="ec-breadcrumb-list">
+                            <li class="ec-breadcrumb-item"><a th:href="@{|/home|}">Trang chủ</a></li>
+                            <li class="ec-breadcrumb-item active">Giỏ hàng</li>
+                        </ul>
+                        <!-- ec-breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Ec breadcrumb end -->
+
+<!-- Ec cart page -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="ec-cart-leftside col-lg-8 col-md-12 ">
+                <!-- cart content Start -->
+                <div class="ec-cart-content">
+                    <div class="ec-cart-inner">
+                        <div class="row">
+                            <form action="#">
+                                <div class="table-content cart-table-content">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Sản phẩm</th>
+                                                <th>Giá</th>
+                                                <th style="text-align: center;">Số lượng</th>
+                                                <th>Tổng cộng</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in cart.items">
+                                                <td data-label="Product" class="ec-cart-pro-name"><a 
+                                                th:href="@{|/product/detail/{{item.id}}|}"><img class="ec-cart-pro-img mr-4"
+                                                            th:src="@{|/images/products/{{item.image1}}|}"
+                                                            alt="" />{{item.name}}</a></td>
+                                                <td data-label="Price" class="ec-cart-pro-price"><span
+                                                        class="amount">{{cart.formatNumber(item.price)}} VNĐ</span></td>
+                                                <td data-label="Quantity" class="ec-cart-pro-qty"
+                                                    style="text-align: center;">
+                                                    <div class="cart-qty-plus-minus">
+                                                        <input class="cart-plus-minus"
+                                                            name="cartqtybutton" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1"/>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Total" class="ec-cart-pro-subtotal">{{cart.formatNumber(item.price*item.qty)}} VNĐ</td>
+                                                <td data-label="Remove" class="ec-cart-pro-remove" th:attr="ng-click=@{|cart.remove(item.id)|}">
+                                                    <a href="#"><i class="ecicon eci-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ec-cart-update-bottom">
+                                            <a th:href="@{|/product/list|}">Tiếp tục mua hàng</a>
+                                            <a class="btn btn-primary" th:href="@{|/checkout|}">Thanh toán</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--cart content End -->
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="ec-cart-rightside col-lg-4 col-md-12">
+                <div class="ec-sidebar-wrap">
+                    <!-- Sidebar Summary Block -->
+                    <div class="ec-sidebar-block">
+                        <div class="ec-sb-title">
+                            <h3 class="ec-sidebar-title">Chi tiết đơn hàng</h3>
+                        </div>
+                     <!--    <div class="ec-sb-block-content">
+                            <h4 class="ec-ship-title">Ước tính vận chuyển</h4>
+                            <div class="ec-cart-form">
+                                <p>Nhập điểm đến của bạn để có được ước tính vận chuyển</p>
+                                <form action="#" method="post">
+                                    <span class="ec-cart-wrap">
+                                        <label>Quốc gia *</label>
+                                        <span class="ec-cart-select-inner">
+                                            <select name="ec_cart_country" id="ec-cart-select-country"
+                                                class="ec-cart-select">
+                                                <option selected="" disabled="">United States</option>
+                                                <option value="1">Country 1</option>
+                                                <option value="2">Country 2</option>
+                                                <option value="3">Country 3</option>
+                                                <option value="4">Country 4</option>
+                                                <option value="5">Country 5</option>
+                                            </select>
+                                        </span>
+                                    </span>
+                                    <span class="ec-cart-wrap">
+                                        <label>Tiểu bang / Tỉnh</label>
+                                        <span class="ec-cart-select-inner">
+                                            <select name="ec_cart_state" id="ec-cart-select-state"
+                                                class="ec-cart-select">
+                                                <option selected="" disabled="">Vui lòng chọn một khu vực / trạng thái
+                                                </option>
+                                                <option value="1">Region/State 1</option>
+                                                <option value="2">Region/State 2</option>
+                                                <option value="3">Region/State 3</option>
+                                                <option value="4">Region/State 4</option>
+                                                <option value="5">Region/State 5</option>
+                                            </select>
+                                        </span>
+                                    </span>
+                                    <span class="ec-cart-wrap">
+                                        <label>Mã zip / Bưu chính</label>
+                                        <input type="text" name="postalcode" placeholder="Mã zip / bưu chính">
+                                    </span>
+                                </form>
+                            </div> -->
+                        </div>
+
+                        <div class="ec-sb-block-content">
+                            <div class="ec-cart-summary-bottom">
+                                <div class="ec-cart-summary">
+                                    <div>
+                                        <span class="text-left">Tổng số</span>
+                                        <span class="text-right">{{cart.formatNumber(cart.amount)}} VNĐ</span>
+                                    </div>
+                                    <!-- <div> 
+                                        <span class="text-left">Tổng số</span>
+                                        <span class="text-right">{{cart.formatNumber(cart.ship)}} VNĐ</span>
+                                    </div> -->
+                                    <div>
+                                        <span class="text-left">Giảm giá</span>
+                                        <span class="text-right"><a class="ec-cart-coupan">Áp dụng phiếu giảm giá</a></span>
+                                    </div>
+                                    <div class="ec-cart-coupan-content">
+                                        <form class="ec-cart-coupan-form" name="ec-cart-coupan-form" method="post"
+                                            action="#">
+                                            <input class="ec-coupan" type="text" required=""
+                                                placeholder="Enter Your Coupan Code" name="ec-coupan" value="">
+                                            <button class="ec-coupan-btn button btn-primary" type="submit"
+                                                name="subscribe" value="">Apply</button>
+                                        </form>
+                                    </div>
+                                    <div class="ec-cart-summary-total">
+                                        <span class="text-left">Tổng cộng</span>
+                                        <span class="text-right">{{cart.formatNumber(cart.amount+cart.ship)}} VNĐ</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sidebar Summary Block -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- New Product Start -->
+<section class="section ec-new-product section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-title">
+                    <h2 class="ec-bg-title">Sản Phẩm Mới</h2>
+                    <h2 class="ec-title">Sản Phẩm Mới</h2>
+                    <p class="sub-title">Các Sản Phẩm Hot Và Bán Chạy Của Shop</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- New Product Content -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                <div class="ec-product-inner">
+                    <div class="ec-pro-image-outer">
+                        <div class="ec-pro-image">
+                            <a href="product-left-sidebar.html" class="image">
+                                <img class="main-image" src="assets/images/product-image/jk11.jpg"
+                                    alt="Product" />
+                                <img class="hover-image" src="assets/images/product-image/jk12.jpg"
+                                    alt="Product" />
+                            </a>
+                            <span class="percentage">20%</span>
+                            <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                title="Quick view" data-bs-toggle="modal"
+                                data-bs-target="#ec_quickview_modal"><img
+                                    src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
+                                    alt="" /></a>
+                            <div class="ec-pro-actions">
+                                <a href="compare.html" class="ec-btn-group compare" title="Compare"><img
+                                        src="assets/images/icons/compare.svg" class="svg_img pro_svg"
+                                        alt="" /></a>
+                                <button title="Add To Cart" class=" add-to-cart"><img
+                                        src="assets/images/icons/cart.svg" class="svg_img pro_svg" alt="" /> Add
+                                    To Cart</button>
+                                <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                        src="assets/images/icons/wishlist.svg" class="svg_img pro_svg"
+                                        alt="" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec-pro-content">
+                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Mô hình Suguru Geto</a>
+                        </h5>
+                        <div class="ec-pro-rating">
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star"></i>
+                        </div>
+                        <div class="ec-pro-list-desc">Anime</div>
+                        <span class="ec-price">
+                            <span class="old-price">1.270.000VNĐ</span>
+                            <span class="new-price">980.000VNĐ</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                <div class="ec-product-inner">
+                    <div class="ec-pro-image-outer">
+                        <div class="ec-pro-image">
+                            <a href="product-left-sidebar.html" class="image">
+                                <img class="main-image" src="assets/images/product-image/jk13.jpg"
+                                    alt="Product" />
+                                <img class="hover-image" src="assets/images/product-image/jk14.jpg"
+                                    alt="Product" />
+                            </a>
+                            <span class="percentage">20%</span>
+                            <span class="flags">
+                                <span class="sale">Sale</span>
+                            </span>
+                            <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                title="Quick view" data-bs-toggle="modal"
+                                data-bs-target="#ec_quickview_modal"><img
+                                    src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
+                                    alt="" /></a>
+                            <div class="ec-pro-actions">
+                                <a href="#" class="ec-btn-group compare" title="Compare"><img
+                                        src="assets/images/icons/compare.svg" class="svg_img pro_svg"
+                                        alt="" /></a>
+                                <button title="Add To Cart" class=" add-to-cart"><img
+                                        src="assets/images/icons/cart.svg" class="svg_img pro_svg" alt="" /> Add
+                                    To Cart</button>
+                                <a href="#" class="ec-btn-group wishlist" title="Wishlist"><img
+                                        src="assets/images/icons/wishlist.svg" class="svg_img pro_svg"
+                                        alt="" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec-pro-content">
+                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Mô Hình Satoru Gojo -
+                                FREEing</a></h5>
+                        <div class="ec-pro-rating">
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star"></i>
+                        </div>
+                        <div class="ec-pro-list-desc">Anime</div>
+                        <span class="ec-price">
+                            <span class="old-price">16.000.000 VNĐ</span>
+                            <span class="new-price">10.000.000 VNĐ</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                <div class="ec-product-inner">
+                    <div class="ec-pro-image-outer">
+                        <div class="ec-pro-image">
+                            <a href="product-left-sidebar.html" class="image">
+                                <img class="main-image" src="assets/images/product-image/jk3.jpg"
+                                    alt="Product" />
+                                <img class="hover-image" src="assets/images/product-image/jk4.jpg"
+                                    alt="Product" />
+                            </a>
+                            <span class="percentage">20%</span>
+                            <span class="flags">
+                                <span class="sale">Sale</span>
+                            </span>
+                            <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                title="Quick view" data-bs-toggle="modal"
+                                data-bs-target="#ec_quickview_modal"><img
+                                    src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
+                                    alt="" /></a>
+                            <div class="ec-pro-actions">
+                                <a href="#" class="ec-btn-group compare" title="Compare"><img
+                                        src="assets/images/icons/compare.svg" class="svg_img pro_svg"
+                                        alt="" /></a>
+                                <button title="Add To Cart" class=" add-to-cart"><img
+                                        src="assets/images/icons/cart.svg" class="svg_img pro_svg" alt="" /> Add
+                                    To Cart</button>
+                                <a href="#" class="ec-btn-group wishlist" title="Wishlist"><img
+                                        src="assets/images/icons/wishlist.svg" class="svg_img pro_svg"
+                                        alt="" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec-pro-content">
+                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Mô Hình Okkotsu Yuta with
+                                Cursed Rika</a></h5>
+                        <div class="ec-pro-rating">
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star"></i>
+                        </div>
+                        <div class="ec-pro-list-desc">Anime</div>
+                        <span class="ec-price">
+                            <span class="old-price">1.400.000VNĐ</span>
+                            <span class="new-price">$1.000.000</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                <div class="ec-product-inner">
+                    <div class="ec-pro-image-outer">
+                        <div class="ec-pro-image">
+                            <a href="product-left-sidebar.html" class="image">
+                                <img class="main-image" src="assets/images/product-image/jk5.jpg"
+                                    alt="Product" />
+                                <img class="hover-image" src="assets/images/product-image/jk6.jpg"
+                                    alt="Product" />
+                            </a>
+                            <span class="percentage">20%</span>
+                            <span class="flags">
+                                <span class="new">New</span>
+                            </span>
+                            <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                title="Quick view" data-bs-toggle="modal"
+                                data-bs-target="#ec_quickview_modal"><img
+                                    src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
+                                    alt="" /></a>
+                            <div class="ec-pro-actions">
+                                <a href="#" class="ec-btn-group compare" title="Compare"><img
+                                        src="assets/images/icons/compare.svg" class="svg_img pro_svg"
+                                        alt="" /></a>
+                                <button title="Add To Cart" class=" add-to-cart"><img
+                                        src="assets/images/icons/cart.svg" class="svg_img pro_svg" alt="" /> Add
+                                    To Cart</button>
+                                <a href="#" class="ec-btn-group wishlist" title="Wishlist"><img
+                                        src="assets/images/icons/wishlist.svg" class="svg_img pro_svg"
+                                        alt="" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec-pro-content">
+                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Mô hình Gojo</a></h5>
+                        <div class="ec-pro-rating">
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star fill"></i>
+                            <i class="ecicon eci-star"></i>
+                        </div>
+                        <div class="ec-pro-list-desc">Anime</div>
+                        <span class="ec-price">
+                            <span class="old-price">5.000.000VNĐ</span>
+                            <span class="new-price">$4.000.000VNĐ</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 shop-all-btn"><a href="#">Xem Thêm Sản Phẩm</a></div>
+        </div>
+    </div>
+</section>
+<!-- New Product end -->
+
+</main>   
+</body>
+</html>

@@ -1,0 +1,177 @@
+<div xmlns:th="http://www.thymeleaf.org"></div>
+
+
+<div class="ec-left-sidebar ec-bg-sidebar">
+    <div id="sidebar" class="sidebar ec-sidebar-footer">
+
+        <div class="ec-brand">
+            <a href="index.html" title="tco">
+                <img class="ec-brand-icon" src="assets-admin/img/logo/ec-site-logo.png" alt="" />
+                <span class="ec-brand-name text-truncate">Model</span>
+            </a>
+        </div>
+
+        <!-- begin sidebar scrollbar -->
+        <div class="ec-navigation" data-simplebar>
+            <!-- sidebar menu -->
+            <ul class="nav sidebar-inner" id="sidebar-menu">
+                <!-- Dashboard -->
+                <li class="active">
+                    <a class="sidenav-item-link" href="/admin">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span class="nav-text">Thống Kê</span>
+                    </a>
+                    <hr>
+                </li>
+                <li class="has-sub">
+                    <a class="sidenav-item-link" href="javascript:void(0)">
+                        <i class="mdi mdi-account-group"></i>
+                        <span class="nav-text">Tài Khoản</span> <b class="caret"></b>
+                    </a>
+                    <div class="collapse">
+                        <ul class="sub-menu" id="users" data-parent="#sidebar-menu">
+                            <li>
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/user/add}">
+                                    <span class="nav-text">Thêm mới</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/user/list/grid}">
+                                    <span class="nav-text">Thẻ tài khoản</span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/user/list}">
+                                    <span class="nav-text">Danh sách tài khoản</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                </li>
+                <li class="has-sub">
+                    <a class="sidenav-item-link" href="javascript:void(0)">
+                        <i class="mdi mdi-dns-outline"></i>
+                        <span class="nav-text">Thể loại</span> <b class="caret"></b>
+                    </a>
+                    <div class="collapse">
+                        <ul class="sub-menu" id="categorys" data-parent="#sidebar-menu">
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/category}">
+                                    <span class="nav-text">Mã thể loại</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/sub_category}">
+                                    <span class="nav-text">Tên thể loại </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                
+                
+                <!-- COMMENT -->
+                <li class="has-sub">
+                    <a class="sidenav-item-link" href="javascript:void(0)">
+                        <i class=" mdi mdi-message"></i>
+                        <span class="nav-text">Bình luận</span> <b class="caret"></b>
+                    </a>
+                    <div class="collapse">
+                        <ul class="sub-menu" id="comments" data-parent="#sidebar-menu">
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/comment/listcomment}">
+                                    <span class="nav-text">Bình luận mới</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/comment/listcomment1}">
+                                    <span class="nav-text">Danh sách  </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                
+                
+                
+                <li class="has-sub">
+                    <a class="sidenav-item-link" href="javascript:void(0)">
+                        <i class="mdi mdi-palette-advanced"></i>
+                        <span class="nav-text">Sản phẩm</span> <b class="caret"></b>
+                    </a>
+                    <div class="collapse">
+                        <ul class="sub-menu" id="products" data-parent="#sidebar-menu">
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/product/add}">
+                                    <span class="nav-text">Thêm mới</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/product/list}">
+                                    <span class="nav-text">Danh sách sản phẩm</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/product/grid}">
+                                    <span class="nav-text">Thẻ sản phẩm</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Orders -->
+                <li class="has-sub">
+                    <a class="sidenav-item-link" href="javascript:void(0)">
+                        <i class="mdi mdi-cart"></i>
+                        <span class="nav-text">Hóa Đơn</span> <b class="caret"></b>
+                    </a>
+                    <div class="collapse">
+                        <ul class="sub-menu" id="orders" data-parent="#sidebar-menu">
+                            <li class="">
+                                <a class="sidenav-item-link" href="/tco-admin/listorder">
+                                    <span class="nav-text">Đơn hàng mới</span>
+                                </a>
+                            </li>
+							<li class="">
+                                <a class="sidenav-item-link" href="/tco-admin/listorder1">
+                                    <span class="nav-text">Đơn hàng đang vận chuyển</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="sidenav-item-link" href="/tco-admin/listorder2">
+                                    <span class="nav-text">Đơn hàng đã hoàn thành</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="sidenav-item-link" href="/tco-admin/listorder3">
+                                    <span class="nav-text">Đơn hàng đã hủy</span>
+                                </a>
+                            </li>
+                          <!--   <li class="">
+                                <a class="sidenav-item-link" href="/tco-admin/order-detail">
+                                    <span class="nav-text">Hóa đơn chi tiết</span>
+                                </a>
+                            </li> -->
+
+                        </ul>
+                    </div>
+                </li>
+                <li class="has-sub">
+                    <a class="sidenav-item-link" href="javascript:void(0)">
+                        <i class="mdi mdi-image-filter-none"></i>
+                        <span class="nav-text">Mở rộng</span> <b class="caret"></b>
+                    </a>
+                    <div class="collapse">
+                        <ul class="sub-menu" id="otherpages" data-parent="#sidebar-menu">
+                            <li class="has-sub">
+                                <a href="404.html">404 Page</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

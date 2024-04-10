@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+<body>
+	<main ng-app="category-app" ng-controller="category-ctrl">
+
+
+		<!-- CONTENT WRAPPER -->
+		<div class="ec-content-wrapper">
+			<div class="content">
+				<div class="breadcrumb-wrapper breadcrumb-wrapper-2">
+					<h1>Hóa Đơn Chi Tiết</h1>
+					<p class="breadcrumbs">
+						<span><a href="/admin">Trang chủ</a></span> <span><i
+							class="mdi mdi-chevron-right"></i></span>Hóa đơn
+					</p>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="ec-odr-dtl card card-default">
+							<div
+								class="card-header card-header-border-bottom d-flex justify-content-between">
+								<h2 class="ec-odr">
+									<tr th:each="item : ${orders}">
+							</div>
+							<div class="card-body">
+								<div class="row"></div>
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="tbl-title">Bảng Chi Tiết</h3>
+										<div class="table-responsive">
+											<table id="responsive-data-table" class="table"
+												style="width: 100%">
+												<thead>
+													<tr>
+														<th>ID</th>
+														<th>SảnPhẩm</th>
+														<th>Số_Lượng</th>
+														<th>Giá</th>
+														<th>Khách hàng</th>
+														<th>Địa chỉ</th>
+														<th>Thao tác</th>
+													</tr>
+												</thead>
+
+												<tbody>
+													<tr th:each="item : ${orders}" th:unless="${item.quantity} == 100">
+														<td>[[${item.id}]]</td>
+														<td>[[${item.product.name}]]</td>
+														<td>[[${item.quantity}]]</td>
+														<td>[[${item.price}]]</td>
+														<td>[[${item.order.user.username}]]</td>
+														<td>[[${item.order	.address}]]</td>
+														<td>
+															<div class="btn-group mb-1">
+																<button type="button"
+																	href="/model/delete/order/${item.price}"
+																	class="btn btn-outline-success">Thông tin</button>
+																<button type="button"
+																	class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+																	data-bs-toggle="dropdown" aria-haspopup="true"
+																	aria-expanded="false" data-display="static">
+																	<span class="sr-only">Info</span>
+																</button>
+
+																<div class="dropdown-menu">
+																	<a class="dropdown-item"
+																		th:href="@{|/order/edit1/${item.order.id}|}">Đang vận chuyển</a>
+									
+											
+																	<a class="dropdown-item"
+																		th:href="@{|/order/edit2/${item.order.id}|}">Đã hoàn thành</a>
+													
+												
+																	<a class="dropdown-item"
+																		th:href="@{|/order/edit3/${item.order.id}|}">Hủy</a>
+																</div>
+															</div>
+														</td>
+
+													</tr>
+													
+
+
+												</tbody>
+											</table>
+											<table class="table table-striped o-tbl">
+												<thead>
+
+												</thead>
+												<tbody>
+
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Tracking Detail -->
+						<div class="card mt-4 trk-order">
+							<div
+								class="p-4 text-center text-white text-lg bg-dark rounded-top">
+								<span class="text-uppercase">Mô tả quá trình vận chuyển-
+								</span> <span class="text-medium">ModelReverside</span>
+							</div>
+							<div
+								class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
+								<div class="w-100 text-center py-1 px-2">
+									<span class="text-medium">Đơn vị vận chuyển:</span> Giao hàng
+									tiết kiệm
+								</div>
+								<div class="w-100 text-center py-1 px-2">
+									<span class="text-medium">Trạng thái:</span> Hoạt động
+								</div>
+								<div class="w-100 text-center py-1 px-2">
+									<span class="text-medium">Hạn mức:</span> 23/12/2023
+								</div>
+							</div>
+							<div class="card-body">
+								<div
+									class="steps d-flex flex-wrap flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+									<div class="step completed">
+										<div class="step-icon-wrap">
+											<div class="step-icon">
+												<i class="mdi mdi-cart"></i>
+											</div>
+										</div>
+										<h4 class="step-title">Đặt hàng<h4>
+									</div>
+									<div class="step completed">
+										<div class="step-icon-wrap">
+											<div class="step-icon">
+												<i class="mdi mdi-tumblr-reblog"></i>
+											</div>
+										</div>
+										<h4 class="step-title">Kiểm tra đơn hàng</h4>
+									</div>
+									<div class="step completed">
+										<div class="step-icon-wrap">
+											<div class="step-icon">
+												<i class="mdi mdi-gift"></i>
+											</div>
+										</div>
+										<h4 class="step-title">Gói sản phẩm</h4>
+									</div>
+									<div class="step">
+										<div class="step-icon-wrap">
+											<div class="step-icon">
+												<i class="mdi mdi-truck-delivery"></i>
+											</div>
+										</div>
+										<h4 class="step-title">Vận chuyển</h4>
+									</div>
+									<div class="step">
+										<div class="step-icon-wrap">
+											<div class="step-icon">
+												<i class="mdi mdi-hail"></i>
+											</div>
+										</div>
+										<h4 class="step-title">Sản phẩm đến nơi</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<!-- End Content -->
+		</div>
+		<!-- End Content Wrapper -->
+
+	</main>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<body>
+	<main th:object="${item}">
+
+		<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="row ec_breadcrumb_inner">
+							<div class="col-md-6 col-sm-12">
+								<h2 class="ec-breadcrumb-title">Single Products</h2>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<!-- ec-breadcrumb-list start -->
+								<ul class="ec-breadcrumb-list">
+									<li class="ec-breadcrumb-item"><a href="index.html">Home</a></li>
+									<li class="ec-breadcrumb-item active">Products</li>
+								</ul>
+								<!-- ec-breadcrumb-list end -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Ec breadcrumb end -->
+
+		<!-- Sart Single product -->
+		<section class="ec-page-content section-space-p">
+			<div class="container">
+				<div class="row">
+					<div class="ec-pro-rightside ec-common-rightside col-lg-12 col-md-12">
+						
+
+						<!-- Single product content Start -->
+						<div class="single-pro-block">
+							<div class="single-pro-inner">
+								<div class="row">
+									<div class="single-pro-img single-pro-img-no-sidebar">
+										<div class="single-product-scroll">
+											<div class="row space-6">
+												<div class="col-md-6 col-sm-6">
+													<a class="popup-gallery"
+														th:href="@{|/images/products/${item.image1}|}"
+														title="Blue women purse"> <img class="example-image"
+														th:src="@{|/images/products/${item.image1}|}"
+														alt="portfolio img">
+													</a>
+												</div>
+												<div class="col-md-6 col-sm-6">
+													<a class="popup-gallery"
+														th:href="@{|/images/products/${item.image2}|}"
+														title="Contrast color Purse"> <img
+														class="example-image"
+														th:src="@{|/images/products/${item.image2}|}"
+														alt="portfolio img">
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="single-pro-desc single-pro-desc-no-sidebar">
+										<div class="single-pro-content">
+											<h5 class="ec-single-title">[[*{name}]]</h5>
+											<div class="ec-single-rating-wrap">
+												<!-- <div class="ec-single-rating">
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star-o"></i>
+                                        </div> -->
+												<span class="ec-read-review"><a
+													href="#ec-spt-nav-review">Sản phẩm khác</a></span>
+											</div>
+											<div class="ec-single-desc">[[*{description}]]</div>
+											<div class="ec-single-price-stoke">
+												<div class="ec-single-price">
+													<span class="ec-single-ps-title">As low as</span> <span
+														th:if="discount == 0" class="new-price">[[*{#numbers.formatDecimal(price,
+														0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+													<div th:if="discount != 0">
+														<span class="old-price" style="color: red;">[[*{#numbers.formatDecimal(price,
+															0, 'COMMA', 0, 'POINT')}]] VNĐ</span> - <span class="new-price">[[*{#numbers.formatDecimal(price
+															* (100 - discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+													</div>
+												</div>
+												<div class="ec-single-stoke">
+													<span class="ec-single-ps-title">IN STOCK</span> <span
+														class="ec-single-sku">SKU#: WH12</span>
+												</div>
+											</div>
+											<div class="ec-single-qty">
+												<div class="qty-plus-minus">
+													<input class="qty-input" type="text" name="ec_qtybtn"
+														value="1" />
+												</div>
+												<div class="ec-single-cart ">
+													<a class="btn btn-primary"
+														th:attr="ng-click=@{|cart.add(${item.id})|}">Add To
+														Cart</a>
+												</div>
+												<div class="ec-single-wishlist">
+													<a class="ec-btn-group wishlist" title="Wishlist"><img
+														th:src="@{/assets/images/icons/wishlist.svg}"
+														class="svg_img pro_svg" alt="" /></a>
+												</div>
+												<div class="ec-single-quickview">
+													<a href="#" class="ec-btn-group quickview"
+														data-link-action="quickview" title="Quick view"
+														data-bs-toggle="modal"
+														data-bs-target="#ec_quickview_modal"><img
+														th:src="@{/assets/images/icons/quickview.svg}"
+														class="svg_img pro_svg" alt="" /></a>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					<!--Single product content End -->
+					<!-- Single product tab start -->
+					<div class="ec-single-pro-tab">
+						<div class="ec-single-pro-tab-wrapper">
+
+							<div class="ec-single-pro-tab-nav">
+								<ul class="nav nav-tabs">
+
+									<li class="nav-item"><a class="nav-link"
+										data-bs-toggle="tab" data-bs-target="#ec-spt-nav-review"
+										role="tablist">Bình luận</a></li>
+								</ul>
+							</div>
+
+							<div class="tab-content  ec-single-pro-tab-content">
+								<div id="ec-spt-nav-review" class="tab-pane fade">
+									<div class="row">
+
+										<div class="ec-t-review-wrapper">
+											<div th:each="comment : ${comments}">
+
+												<div class="ec-t-review-item" th:if="${comment.status} ==1 ">
+
+													<div class="ec-t-review-avtar">
+														<img th:src="@{/assets/images/review-image/u1.jpg}" />
+													</div>
+												
+
+												<div class="ec-t-review-content">
+													<div class="ec-t-review-top">
+														<div class="ec-t-review-name">[[${comment.usernames.username}]]</div>
+													</div>
+
+													<div class="ec-t-review-bottom">
+														<p>[[${comment.comment}]]</p>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+									<div class="ec-ratting-content" >
+										
+										<div class="ec-ratting-form">
+												<form th:action="@{/createComment/submit/{itemId}(itemId=${item.id})}" th:object="${comments}" method="post">
+												<div class="ec-ratting-input">
+												     <h3 class="ec-sidebar-title">Khách hàng</h3>
+												    
+													<input type="hidden" id="username" name="username" /> [[${#request.remoteUser}]]
+												</div>
+											
+												<div class="ec-ratting-input form-submit">
+													<textarea name="comment" placeholder="Enter Your Comment" > </textarea>
+													<button class="btn btn-primary" type="submit" th:href="@{/tco-client/shop/comment_product}">Gửi đánh giá</button>
+												</div>
+											</form>
+										</div>
+										
+									</div>
+
+
+
+
+								</div>
+							</div>
+                         </div>
+
+                       </div>
+                      </div>
+
+					</div>
+							
+						
+				
+		
+			</section>
+				
+
+
+
+							
+							<!-- product details description area end -->
+	
+		<!-- End Single product -->
+
+		<!-- Related Product Start -->
+		<section class="section ec-releted-product section-space-p">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="section-title">
+							<h2 class="ec-bg-title">Related products</h2>
+							<h2 class="ec-title">Related products</h2>
+							<p class="sub-title">Browse The Collection of Top Products</p>
+						</div>
+					</div>
+				</div>
+				<div class="row margin-minus-b-30">
+					<!-- Related Product Content -->
+					<div
+						class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content"
+						th:each="p:*{subcategory.products}">
+						<div class="ec-product-inner">
+							<div class="ec-pro-image-outer">
+								<div class="ec-pro-image">
+									<a href="product-left-sidebar.html" class="image"> <img
+										class="main-image" th:src="@{|/images/products/${p.image1}|}"
+										alt="Product" /> <img class="hover-image"
+										th:src="@{|/images/products/${p.image2}|}" alt="Product" />
+									</a> <span class="percentage">20%</span> <a href="#"
+										class="quickview" data-link-action="quickview"
+										title="Quick view" data-bs-toggle="modal"
+										data-bs-target="#ec_quickview_modal"><img
+										th:src="@{/assets/images/icons/quickview.svg}"
+										class="svg_img pro_svg" alt="" /></a>
+									<div class="ec-pro-actions">
+										<a href="compare.html" class="ec-btn-group compare"
+											title="Compare"><img
+											th:src="@{/assets/images/icons/compare.svg}"
+											class="svg_img pro_svg" alt="" /></a>
+										<button title="Add To Cart" class=" add-to-cart">
+											<img th:src="@{/assets/images/icons/cart.svg}"
+												class="svg_img pro_svg" alt="" /> Add To Cart
+										</button>
+										<a class="ec-btn-group wishlist" title="Wishlist"><img
+											th:src="@{/assets/images/icons/wishlist.svg}"
+											class="svg_img pro_svg" alt="" /></a>
+									</div>
+								</div>
+							</div>
+							<div class="ec-pro-content">
+								<h5 class="ec-pro-title">
+									<a href="product-left-sidebar.html"
+										th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a>
+								</h5>
+								<!-- <div class="ec-pro-rating">
+									<i class="ecicon eci-star fill"></i> <i
+										class="ecicon eci-star fill"></i> <i
+										class="ecicon eci-star fill"></i> <i
+										class="ecicon eci-star fill"></i> <i class="ecicon eci-star"></i>
+								</div> -->
+								<div class="ec-pro-list-desc">Lorem Ipsum is simply dummy
+									text of the printing and typesetting industry. Lorem Ipsum is
+									simply dutmmy text ever since the 1500s, when an unknown
+									printer took a galley.</div>
+								<span class="ec-price"> <span class="old-price">[[*{#numbers.formatDecimal(price,
+										0, 'COMMA', 0, 'POINT')}]] VNĐ</span> <span class="new-price">[[*{#numbers.formatDecimal(price
+										* (100 - discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+		</section>
+		<!-- Related Product end -->
+
+
+	</main>
+</body>
+</html>
